@@ -1,4 +1,4 @@
-const array = [1, 2, 4, 5, 7, 8,20];
+const array = [1, 2, 4, 5, 7, 8, 20];
 let count = 0;
 
 function binarySearch(array, item) {
@@ -24,5 +24,18 @@ function binarySearch(array, item) {
   return position;
 }
 
-console.log(binarySearch(array, 7));
+function recursiveBinarySearch(array, item, start, end) {
+  let middle = Math.floor((start + end) / 2);
+  count++;
+  if (item === array[middle]) {
+    return middle;
+  }
+  if (item < array[middle]) {
+    return recursiveBinarySearch(array, item, start, middle - 1);
+  } else {
+    return recursiveBinarySearch(array, item, middle + 1, end);
+  }
+}
+
+console.log(recursiveBinarySearch(array, 8, 0, array.length));
 console.log("count:", count);
